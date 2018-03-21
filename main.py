@@ -9,6 +9,9 @@ from PIL import Image, ImageDraw
 #height = image.size[1]
 #pix = image.load()
 
+
+
+
 layer_count = 3
 neuron_count = []
 X = []
