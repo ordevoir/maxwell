@@ -3,13 +3,13 @@ import math
 import random
 from PIL import Image, ImageDraw
 
-#image = Image.open("temp.jpg")
-#draw = ImageDraw.Draw(image)
-#width = image.size[0]
-#height = image.size[1]
-#pix = image.load()
+image = Image.open("MNIST/mnist_train0.jpg")
+draw = ImageDraw.Draw(image)
+width = image.size[0]
+height = image.size[1]
+pix = image.load()
 
-
+image.save("MNIST/1.jpg", "JPEG")
 
 
 layer_count = 3
