@@ -3,14 +3,46 @@ import math
 import random
 from PIL import Image, ImageDraw
 
-image = Image.open("MNIST/mnist_train0.jpg")
-draw = ImageDraw.Draw(image)
+image = Image.open("MNIST/mnist_train9.jpg")
 width = image.size[0]
 height = image.size[1]
 pix = image.load()
 
-image.save("MNIST/1.jpg", "JPEG")
+print('size', width, height)
 
+width_frame = 28 #width // 77
+height_frame = 28 #height // 77
+print(width_frame)
+print(height_frame)
+
+
+im_splitted = Image.new('L', (width_frame, height_frame))
+draw = ImageDraw.Draw(im_splitted)
+
+frame_number = 0
+
+i = 0
+j = 0
+
+for i in range(75):
+    for j in range(75):
+        beginX = i * width_frame
+        endX = beginX + width_frame
+        beginY = j * height_frame
+        endY = beginY + height_frame
+        print(beginX, endX)
+        print(beginY, endY)
+        for k in range(beginX, endX):
+            for l in range(beginY, endY):
+                draw.point((k - beginX, l - beginY), pix[k, l])
+#                print(k, l)
+        path = "{0}_{1}.{2}".format(i, j, "jpg")
+        print(i, j)
+        im_splitted.save(path, "JPEG")
+
+image.save("MNIST/example/1.jpg", "JPEG")
+
+del draw
 
 layer_count = 3
 neuron_count = []
