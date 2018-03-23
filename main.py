@@ -21,9 +21,6 @@ draw = ImageDraw.Draw(im_splitted)
 
 frame_number = 0
 
-i = 0
-j = 0
-
 for i in range(75):
     for j in range(75):
         beginX = i * width_frame
