@@ -33,7 +33,7 @@ for i in range(75):
             for l in range(beginY, endY):
                 draw.point((k - beginX, l - beginY), pix[k, l])
 #                print(k, l)
-        path = "{0}_{1}.{2}".format(i, j, "jpg")
+        path = "z_{0}_{1}.{2}".format(i, j, "jpg")
         print(i, j)
         im_splitted.save(path, "JPEG")
 
