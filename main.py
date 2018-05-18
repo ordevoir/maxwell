@@ -6,7 +6,7 @@ from PIL import Image, ImageDraw
 image = Image.open("MNIST/mnist_train9.jpg")
 width = image.size[0]
 height = image.size[1]
-pix = image.load()
+pix = image.load()          # contains pixel values
 
 print('size', width, height)
 
@@ -16,13 +16,15 @@ print(width_frame)
 print(height_frame)
 
 
-im_splitted = Image.new('L', (width_frame, height_frame))
-draw = ImageDraw.Draw(im_splitted)
+imSplittedSize = Image.new('L', (width_frame, height_frame))
+draw = ImageDraw.Draw(imSplittedSize)
 
 frame_number = 0
 
-for i in range(75):
-    for j in range(75):
+# separating and saving images
+
+for i in range(12):
+    for j in range(12):
         beginX = i * width_frame
         endX = beginX + width_frame
         beginY = j * height_frame
@@ -33,16 +35,16 @@ for i in range(75):
             for l in range(beginY, endY):
                 draw.point((k - beginX, l - beginY), pix[k, l])
 #                print(k, l)
-        path = "z_{0}_{1}.{2}".format(i, j, "jpg")
+        path = "result/z_{0}_{1}.{2}".format(i, j, "jpg")
         print(i, j)
-        im_splitted.save(path, "JPEG")
+        imSplittedSize.save(path, "JPEG")
 
 image.save("MNIST/example/1.jpg", "JPEG")
 
 del draw
 
-layer_count = 3
-neuron_count = []
+layer_count = 3        # count of layers
+neuron_count = []      # count of neurons in layers
 X = []
 for i in range(16):
     X.append(random.random())
@@ -59,7 +61,7 @@ class Neuron:
     def input(self, X = None):
         self.X = X
 
-    def output(self, alpha=0.1):
+    def output(self, alpha=0.1):        
         self.alpha = alpha
         i = 0
         sp = 0
